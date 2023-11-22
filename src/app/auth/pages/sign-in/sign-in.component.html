@@ -1,0 +1,28 @@
+<form class="container-form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <h1>Login</h1>
+
+  <div class="container">
+
+    <mat-form-field appearance="outline">
+      <mat-label>User</mat-label>
+      <input matInput placeholder="Add user" formControlName="user">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-hint *ngIf="!isValidField('user')">user is required</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Add password" formControlName="password">
+      <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint *ngIf="!isValidField('password')">password is required</mat-hint>
+    </mat-form-field>
+
+
+    <button mat-flat-button color="primary" type="submit">Sign In<mat-icon>save</mat-icon></button>
+  </div>
+  <a [routerLink]="['../sign-up']" class="link">Sign Up</a>
+</form>

@@ -1,0 +1,70 @@
+<form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+
+  <mat-form-field class="full-width">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput placeholder="Add name">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Address</mat-label>
+    <input formControlName="address" matInput placeholder="Add address">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Mobile</mat-label>
+    <input formControlName="mobile" matInput placeholder="Add mobile">
+  </mat-form-field>
+
+
+
+  <button (click)="onAddNewProduct()" mat-raised-button color="primary" type="button">Add product</button>
+
+  <mat-form-field class="full-width">
+    <mat-label>Product</mat-label>
+    <input [formControl]="newProduct" matInput placeholder="Add product" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Account</mat-label>
+    <input [formControl]="newAccount" matInput placeholder="Add account">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Price</mat-label>
+    <input [formControl]="newPrice" matInput placeholder="Add price">
+  </mat-form-field>
+
+  <!-- View Products -->
+
+  <div class="container-card" formArrayName="products" *ngIf="products.controls.length > 0">
+    <mat-label>News Products</mat-label>
+    <div class="card-content" *ngFor="let product of products.controls; let i = index" [ngStyle]="{width: '100%'}">
+
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Product: {{ product.value.product }}</mat-card-title>
+            <mat-card-subtitle>Account: {{ product.value.account }}</mat-card-subtitle>
+            <mat-card-subtitle>Price: {{ product.value.price }}</mat-card-subtitle>
+            <mat-card-subtitle>Total: {{ product.value.account*product.value.price }}</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          Total: {{ product.value.account * product.value.price }}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button type="button" (click)="onUpdateProduct(i)">EDIT</button>
+          <span class="spacer"></span>
+          <button mat-mini-fab color="primary" type="button" aria-label="delete" (click)="onDeleteProduct(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+  </div>
+
+  <button type="submit" mat-raised-button color="primary">Save</button>
+
+</form>

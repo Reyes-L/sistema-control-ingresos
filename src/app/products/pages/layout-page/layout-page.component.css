@@ -1,0 +1,11 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.container-router-outlet {
+  font-size: 0.9rem;
+}
+.container-router-outlet {
+  margin-top: 2px;
+  padding-top: 2px;
+  overflow-x: hidden;
+}

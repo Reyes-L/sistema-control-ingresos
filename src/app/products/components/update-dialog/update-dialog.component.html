@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Esta seguro?</h1>
+
+<div mat-dialog-content class="content-dialog">
+  <p>Update Product</p>
+  <mat-form-field class="full-width">
+    <mat-label>Product</mat-label>
+    <input [(ngModel)]="data.product" matInput placeholder="Add product" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Account</mat-label>
+    <input [(ngModel)]="data.account" matInput placeholder="Add account">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Price</mat-label>
+    <input [(ngModel)]="data.price" matInput placeholder="Add price">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <span class="spacer"></span>
+  <button color="primary" mat-button (click)="onConfirm()" cdkFocusInitial>Save</button>
+</div>

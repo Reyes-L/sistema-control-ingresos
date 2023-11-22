@@ -1,0 +1,70 @@
+<div class="content">
+
+  <div class="card-content" *ngFor="let order of orders; let i = index">
+    <mat-card class="card">
+      <mat-card-header>
+
+        <mat-card-title>
+          <mat-icon>account_circle</mat-icon>
+          Client: {{ order.name }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <mat-icon>description</mat-icon>
+          Address: {{order.address}}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <mat-icon>settings_phone</mat-icon>
+          Mobile: {{order.mobile}}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <table mat-table [dataSource]=" order.products " class="mat-elevation-z8">
+
+          <!-- Index Column -->
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let element = index"> {{ element + 1 }} </td>
+          </ng-container>
+
+          <!-- Product Column -->
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef> Product </th>
+            <td mat-cell *matCellDef="let element "> {{ element.product }} </td>
+          </ng-container>
+
+          <!-- Account Column -->
+          <ng-container matColumnDef="account">
+            <th mat-header-cell *matHeaderCellDef> Account </th>
+            <td mat-cell *matCellDef="let element"> {{ element.account }} </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{ element.price }} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+      </mat-card-content>
+      <span class="spacer"></span>
+      <mat-card-actions>
+
+        <a [routerLink]="['../view-order', order.id]">
+          <button mat-stroked-button color="primary" type="button"><mat-icon>details</mat-icon>
+            DETAILS
+          </button>
+        </a>
+
+        <span class="spacer"></span>
+
+        <button mat-stroked-button color="warn" type="button"
+          (click)="onDeleteOrder(order.id)"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

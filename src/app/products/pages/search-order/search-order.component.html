@@ -1,0 +1,66 @@
+<div class="container-search">
+  <h3>Buscador</h3>
+  <mat-form-field>
+    <mat-label>Búscador de ordernes</mat-label>
+    <input type="text" matInput [formControl]='searchInput' (input)="searchOrder()" [matAutocomplete]="auto" />
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onSelectedOption( $event )">
+      <mat-option *ngFor="let order of orders " [value]="order">
+        {{ order.name }}
+      </mat-option>
+
+      <mat-option *ngIf="orders.length === 0 && searchInput.value && searchInput.value.length > 0" value="">
+        No se encontró nada con el término {{ searchInput.value }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- Card search-->
+
+  <mat-card [ngStyle]="{'max-width': '400px', margin: '0 auto'}" *ngIf="selectedOrder">
+    <mat-card-header>
+
+      <mat-card-title>
+        <mat-icon>account_circle</mat-icon>
+        {{ selectedOrder.name }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-icon>description</mat-icon>
+        {{ selectedOrder.address }}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <mat-icon>settings_phone</mat-icon>
+        {{ selectedOrder.mobile }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div *ngFor="let product of selectedOrder.products; let i = index" class="characteres-orders">
+        <button mat-mini-fab color="primary" aria-label="number product" [ngStyle]="{'margin-top':'1rem'}">
+          {{ i + 1 }}
+        </button>
+        <mat-card-subtitle>
+          <mat-icon>add_shopping_cart</mat-icon>
+          Product: {{ product.product }}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <mat-icon>confirmation_number</mat-icon>
+          Account: {{ product.account }}
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          <mat-icon>local_atm</mat-icon>
+          Price: {{ product.price }}
+        </mat-card-subtitle>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <span></span>
+      <span class="spacer"></span>
+      <a [routerLink]="['/products']">
+        <button mat-button color="primary">Regresar</button>
+      </a>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

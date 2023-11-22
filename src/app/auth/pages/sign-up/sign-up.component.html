@@ -1,0 +1,48 @@
+<form class="container-form">
+
+  <div class="container">
+    <h1>Sign Up</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Add name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>names is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>User</mat-label>
+      <input matInput placeholder="Add user">
+      <mat-icon matSuffix>person</mat-icon>
+      <mat-hint>user is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" required>
+      <mat-error>email is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Add password">
+      <button mat-icon-button matSuffix type="button" (click)="hidefirst = !hidefirst"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidefirst">
+        <mat-icon>{{hidefirst? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint>password is required</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Add password">
+      <button mat-icon-button matSuffix type="button" (click)="hideseconds = !hideseconds"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideseconds">
+        <mat-icon>{{hideseconds? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint>password is required</mat-hint>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit">Register<mat-icon>save</mat-icon></button>
+  </div>
+  <a [routerLink]="['../sign-in']" class="link">Sign In</a>
+</form>

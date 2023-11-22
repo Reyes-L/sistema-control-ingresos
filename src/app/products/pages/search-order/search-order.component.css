@@ -1,0 +1,33 @@
+.container-search {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+mat-card {
+  width: 100%;
+}
+.characteres-orders {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 1rem;
+}
+mat-card-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
